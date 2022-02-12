@@ -66,6 +66,7 @@ class Game extends React.Component {
       history: [{
         squares: Array(9).fill(null),
       }],
+      stepNumer: 0,
       xIsNext: true,
     };
   }
@@ -86,6 +87,14 @@ class Game extends React.Component {
       xIsNext: !this.state.xIsNext,
     });
   }
+
+  jumpTo(step){
+    this.setState({
+      stepNumer: step,
+      xIsNext: (step%2) ===0,
+    });
+  }
+
   render() {
     const history = this.state.history;
     const current = history[history.length - 1];
